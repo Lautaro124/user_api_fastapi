@@ -20,6 +20,6 @@ def post_status_user(status_user: SchemaStatusUser):
         return db_status_user
 
 @router.get('/get_all_status')
-def get_all_users():
+def get_all_status():
     status = db.session.query(Status).all()
     return status
