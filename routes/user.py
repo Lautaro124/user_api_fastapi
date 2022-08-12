@@ -14,7 +14,7 @@ def get_all_users():
     users = db.session.query(User).all()
     return users
 
-@router.post('/user/create/user', response_model=SchemaUser)
+@router.post('/create', response_model=SchemaUser)
 async def post_user(user: SchemaUser):
         db_user = User(
             name= user.name, 

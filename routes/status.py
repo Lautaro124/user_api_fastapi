@@ -9,7 +9,7 @@ router = APIRouter(
     tags=['👀 Status user']
 )
 
-@router.post('/status/create/status_user', response_model=SchemaStatusUser)
+@router.post('/create', response_model=SchemaStatusUser)
 def post_status_user(status_user: SchemaStatusUser):
         db_status_user = Status(
             name= status_user.name,
@@ -18,3 +18,8 @@ def post_status_user(status_user: SchemaStatusUser):
         db.session.add(db_status_user)
         db.session.commit()
         return db_status_user
+
+@router.get('/get_all_status')
+def get_all_users():
+    status = db.session.query(Status).all()
+    return status
